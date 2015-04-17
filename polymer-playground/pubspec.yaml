@@ -1,4 +1,4 @@
-name: polymer-playground
+name: polymer_playground
 dependencies:
   core_elements: any
   polymer: any

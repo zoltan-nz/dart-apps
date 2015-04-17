@@ -7,11 +7,13 @@
         display: block;
         margin: 0px;
       }
+
       form {
         padding: 20px;
         background: #fafafa;
         border-radius: 6px;
       }
+
       textarea {
         display: block;
         width: 90%;
@@ -23,19 +25,22 @@
         background: #fff;
         border: 1px solid #ccc;
         border-radius: 3px;
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         margin-bottom: 5px;
       }
+
       .error {
         color: red;
         font-size: .9em;
         font-style: italic;
         margin-left: 10px;
       }
+
       .field {
         margin-bottom: 12px;
       }
+
       button {
         color: #333;
         border-color: #ccc;
@@ -53,6 +58,7 @@
         line-height: 1.42857143;
         border-radius: 4px;
       }
+
       select {
         height: 40px;
         width: 50%;
@@ -65,12 +71,41 @@
         background-image: none;
         border: 1px solid #ccc;
         border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-        -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
       }
     </style>
+
+    <form>
+      <div class="field">
+        <textarea placeholder="Add title" value="{{codelab.title}}"></textarea>
+
+        <div>
+          <span class="chars-left">{{maxTitleLength - codelab.title.length}}</span>
+        </div>
+      </div>
+      <div class="field">
+        <textarea placeholder="Add description" value="{{codelab.description}}"></textarea>
+
+        <div>
+          <span class="chars-left"> {{maxDescriptionLength - codelab.description.length}} </span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Level: </label>
+        <select value="{{codelab.level}}">
+          <option template repeat="{{level in allLevels}}">
+            {{level}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
   </template>
   <script type="application/dart" src="codelab_form.dart"></script>
 </polymer-element>
