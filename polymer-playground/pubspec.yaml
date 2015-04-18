@@ -6,3 +6,5 @@ transformers:
 - polymer:
     entry_points:
     - web/index.html
+- $dart2js:
+    minify: true

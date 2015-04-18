@@ -23,7 +23,24 @@
         transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
       }
     </style>
-    <codelab-form codelab="{{newCodelab}}"></codelab-form>
+    <div>
+      <label>Filter: </label>
+      <select value="{{filterValue}}" on-change="{{filter}}">
+        <option template repeat="{{filter in filters}}">
+          {{filter}}
+        </option>
+      </select>
+    </div>
+    <div on-codelabvalidated="{{addCodelab}}"
+         on-formnotneeded="{{resetForm}}">
+      <codelab-form codelab="{{newCodelab}}"></codelab-form>
+    </div>
+    <div on-deletecodelab="{{deleteCodelab}}"
+         on-levelchanged="{{filter}}">
+      <template repeat="{{codelab in filteredCodelabs}}">
+        <codelab-element codelab="{{codelab}}"></codelab-element>
+      </template>
+    </div>
   </template>
   <script type="application/dart" src="codelab_list.dart"></script>
 </polymer-element>
